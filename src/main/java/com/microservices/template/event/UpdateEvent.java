@@ -1,15 +1,15 @@
-package com.microservices.template.events;
+package com.microservices.template.event;
 
-public class DeleteEvent<T> implements Event<T> {
+public class UpdateEvent<T> implements Event<T> {
     private final T payload;
 
-    public DeleteEvent(T payload) {
+    public UpdateEvent(T payload) {
         this.payload = payload;
     }
 
     @Override
     public EventType getEventType() {
-        return EventType.DELETED;
+        return EventType.UPDATED;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.microservices.template.events;
+package com.microservices.template.event;
 
 public interface Event<T> {
     EventType getEventType();

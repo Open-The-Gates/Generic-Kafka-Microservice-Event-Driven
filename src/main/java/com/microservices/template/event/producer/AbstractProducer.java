@@ -1,7 +1,6 @@
-package com.microservices.template.events.producer;
+package com.microservices.template.event.producer;
 
-import com.microservices.template.events.Event;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.microservices.template.event.Event;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +14,9 @@ public class AbstractProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public <T> void sendEvent(Event<T> event, String topic) {
+    public <T> void sendEvent(Event<T> event) {
         String key = UUID.randomUUID().toString(); // Or derive from the event
-        kafkaTemplate.send(topic, key, event);
-        System.out.println("Sent event to Kafka: " + event.getEventType() + " for entity: " + event.getPayload());
+        kafkaTemplate.send(event.getPayload().getClass().getSimpleName(), key, event);
+        System.out.println("Sent event to Broker: " + event.getEventType() + " for entity: " + event.getPayload());
     }
 }

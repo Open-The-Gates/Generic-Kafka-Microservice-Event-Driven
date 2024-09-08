@@ -1,4 +1,4 @@
-package com.microservices.template.events;
+package com.microservices.template.event;
 
 public class CreateEvent<T> implements Event<T> {
     private final T payload;
